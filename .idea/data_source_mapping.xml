@@ -2,6 +2,7 @@
 <project version="4">
   <component name="DataSourcePerFileMappings">
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/42629d21-e7cc-4f75-a732-227b4c3d5f08/console.sql" value="42629d21-e7cc-4f75-a732-227b4c3d5f08" />
+    <file url="file://$PROJECT_DIR$/Handin1.sql" value="42629d21-e7cc-4f75-a732-227b4c3d5f08" />
     <file url="file://$PROJECT_DIR$/Test.sql" value="42629d21-e7cc-4f75-a732-227b4c3d5f08" />
     <file url="file://$PROJECT_DIR$/cafeTask.sql" value="42629d21-e7cc-4f75-a732-227b4c3d5f08" />
     <file url="file://$PROJECT_DIR$/goodreadsMAIN.sql" value="42629d21-e7cc-4f75-a732-227b4c3d5f08" />
