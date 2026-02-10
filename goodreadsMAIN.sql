@@ -6,7 +6,11 @@ FROM author
 WHERE id=23;
 
 --task2:
+SELECT title
+FROM book
+where id=24358527;
 
+--task3:
 
 
 
