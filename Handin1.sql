@@ -12,3 +12,15 @@ FROM book;
  FROM book;
 /*calculates the published year *2 */
 
+--TaskB
+SELECT *
+FROM book
+WHERE year_published=2020;
+
+SELECT *
+FROM book
+WHERE title LIKE 'The%' OR title LIKE '_a%'
+
+SELECT *
+FROM book
+WHERE isbn IS NULL;
