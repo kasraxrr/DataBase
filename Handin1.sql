@@ -1,6 +1,6 @@
 SET SCHEMA 'goodreads_v2';
 
---TaskA
+--TaskA(Select operations)
 SELECT id,title,year_published as pub_year
 FROM book;
 
@@ -12,7 +12,7 @@ FROM book;
  FROM book;
 /*calculates the published year *2 */
 
---TaskB
+--TaskB(Filtering)
 SELECT *
 FROM book
 WHERE year_published=2020;
@@ -24,3 +24,18 @@ WHERE title LIKE 'The%' OR title LIKE '_a%'
 SELECT *
 FROM book
 WHERE isbn IS NULL;
+
+--TaskC(Aggregate operations)
+SELECT COUNT(*)
+FROM book;
+
+SELECT MAX(page_count)
+FROM book;
+
+SELECT MIN(page_count)
+FROM book;
+
+SELECT AVG(page_count)
+FROM book;
+
+
