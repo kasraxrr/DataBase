@@ -98,32 +98,58 @@ WHERE book_id = (SELECT id FROM book where title = 'Gullstruck Island');
 --task20
 SELECT COUNT(*)
 FROM co_authors
-WHERE author_id = (SELECT id FROM author WHERE first_name = 'Ray' AND last_name = 'Porter' )
+WHERE author_id = (SELECT id FROM author WHERE first_name = 'Ray' AND last_name = 'Porter' );
 
 --Task31
 SELECT first_name,last_name,title
 FROM author,book
-WHERE book.author_id=author.id AND book.title LIKE '%The Summer Dragon%'
+WHERE book.author_id=author.id AND book.title LIKE '%The Summer Dragon%';
 --OR
 SELECT first_name,last_name
-from author
+FROM author
 WHERE id=(SELECT author_id
           FROM book
-          WHERE title LIKE '%The Summer Dragon%')
+          WHERE title LIKE '%The Summer Dragon%');
+--or
+SELECT first_name,last_name
+FROM author as a
+JOIN book as b
+on a.id=b.author_id
+WHERE title LIKE '%The Summer Dragon%';
 
 --Task32
 SELECT type
-FROM binding_type,book
-WHERE binding_type.id= book.binding_id
-    AND title='Dead Iron (Age of Steam,  #1)';
+FROM binding_type as bi
+JOIN book as bo
+on bi.id=bo.binding_id
+WHERE title='Dead Iron (Age of Steam,  #1)';
+
 
 --Task33
 SELECT type,COUNT(*)
-FROM binding_type as bt,book as b
-WHERE b.binding_id=bt.id
-group by type;
+FROM binding_type AS bt
+JOIN book AS b
+on b.binding_id=bt.id
+GROUP BY type;
 
 --Task34
+SELECT profile_name , COUNT(*)
+FROM profile AS p
+JOIN book_read AS b
+on p.id=b.profile_id
+GROUP BY profile_name;
+
+--Task35
+SELECT genre
+FROM genre AS g
+JOIN book_genre AS bg
+ON g.id=bg.genre_id
+JOIN book AS b
+on bg.book_id=b.id
+WHERE b.title='Hand of Mars (Starship''s Mage,  #2)';
+
+--Task36
+
 
 
 
