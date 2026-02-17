@@ -100,8 +100,16 @@ SELECT COUNT(*)
 FROM co_authors
 WHERE author_id = (SELECT id FROM author WHERE first_name = 'Ray' AND last_name = 'Porter' )
 
-
-
+--Task30
+SELECT first_name,last_name,title
+FROM author,book
+WHERE book.author_id=author.id AND book.title LIKE '%The Summer Dragon%'
+--OR
+SELECT first_name,last_name
+from author
+WHERE id=(SELECT author_id
+          FROM book
+          WHERE title LIKE '%The Summer Dragon%')
 
 
 

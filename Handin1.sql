@@ -1,4 +1,4 @@
-SET SCHEMA 'goodreads_v2';
+SET SCHEMA 'goodreads';
 
 --TaskA(Select operations)
 SELECT id,title,year_published as pub_year
