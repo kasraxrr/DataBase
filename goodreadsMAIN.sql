@@ -149,6 +149,51 @@ on bg.book_id=b.id
 WHERE b.title='Hand of Mars (Starship''s Mage,  #2)';
 
 --Task36
+(SELECT first_name,last_name
+FROM author AS a
+JOIN book AS b
+ON a.id=b.author_id
+WHERE b.title= 'Dark One')
+    union
+(
+SELECT a.first_name, a.last_name
+FROM author a
+JOIN co_authors c ON a.id = c.author_id
+JOIN book b ON b.id = c.book_id
+WHERE b.title = 'Dark One');
+
+--TAsk37
+SELECT b.title
+FROM book_read AS br
+JOIN book AS b ON b.id = br.book_id
+WHERE br.status = 'read'
+GROUP BY b.id, b.title
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+
+--Task38
+SELECT DISTINCT b.title,page_count,bi.type
+FROM book AS b
+JOIN binding_type as bi
+on b.binding_id=bi.id
+WHERE page_count IS NOT NULL
+ORDER BY page_count DESC
+LIMIT 10;
+
+--TASK39
+SELECT bg.genre_id,COUNT(*),g.genre
+FROM book_genre AS bg
+JOIN genre as g
+on bg.genre_id=g.id
+group by genre_id,g.genre
+order by genre_id
+
+--Task40
+
+
+
+
+
 
 
 
