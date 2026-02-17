@@ -100,7 +100,7 @@ SELECT COUNT(*)
 FROM co_authors
 WHERE author_id = (SELECT id FROM author WHERE first_name = 'Ray' AND last_name = 'Porter' )
 
---Task30
+--Task31
 SELECT first_name,last_name,title
 FROM author,book
 WHERE book.author_id=author.id AND book.title LIKE '%The Summer Dragon%'
@@ -111,7 +111,19 @@ WHERE id=(SELECT author_id
           FROM book
           WHERE title LIKE '%The Summer Dragon%')
 
+--Task32
+SELECT type
+FROM binding_type,book
+WHERE binding_type.id= book.binding_id
+    AND title='Dead Iron (Age of Steam,  #1)';
 
+--Task33
+SELECT type,COUNT(*)
+FROM binding_type as bt,book as b
+WHERE b.binding_id=bt.id
+group by type;
+
+--Task34
 
 
 
