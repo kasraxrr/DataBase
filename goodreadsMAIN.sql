@@ -1,5 +1,7 @@
 SET SCHEMA 'goodreads_v2';
 
+/*https://troelsmortensen.github.io/CodeLabs/Tutorials/GoodreadsExercises/Page.html*/
+
 --task2:
 SELECT first_name, last_name, id
 FROM author
@@ -186,9 +188,101 @@ FROM book_genre AS bg
 JOIN genre as g
 on bg.genre_id=g.id
 group by genre_id,g.genre
-order by genre_id
+order by genre_id;
 
 --Task40
+SELECT publisher_name,COUNT(*)
+FROM publisher AS p
+JOIN book AS b
+on p.id=b.publisher_id
+GROUP BY publisher_name
+ORDER BY COUNT(*) DESC;
+
+--Task41
+SELECT title,AVG(rating)
+FROM book AS b
+JOIN book_read AS br
+on b.id=br.book_id
+GROUP BY title
+ORDER BY AVG(rating) DESC
+LIMIT 1;
+
+--TASK 42
+SELECT profile_name,COUNT(*)
+FROM profile AS p
+JOIN book_read AS br
+ON p.id=br.profile_id
+WHERE profile_name='radiophobia' AND
+status='read' AND
+EXTRACT(YEAR FROM date_finished)='2018'
+GROUP BY profile_name;
+
+--Task43
+SELECT EXTRACT(YEAR FROM date_finished),COUNT(*)
+FROM profile AS p
+JOIN book_read AS br
+ON p.id=br.profile_id
+WHERE profile_name='radiophobia' AND
+status='read'
+GROUP BY EXTRACT(YEAR FROM date_finished);
+
+--Task44
+SELECT title,AVG(rating) r
+FROM book b
+JOIN book_read br
+ON b.id=Br.book_id
+GROUP BY title
+ORDER BY r DESC
+LIMIT 10;
+
+--Task45
+SELECT title,AVG(rating) a
+FROM book b
+JOIN book_read br
+ON b.id=br.book_id
+GROUP BY title
+order by a
+LIMIT 1;
+
+--Task46
+SELECT title,book_id,b.id
+FROM book b
+LEFT JOIN book_read br
+on b.id=br.book_id
+WHERE book_id is null;
+
+--Task47
+SELECT profile_name,COUNT(*) c
+FROM profile p
+JOIN book_read b
+on p.id=b.profile_id
+WHERE status='read'
+GROUP BY profile_name
+ORDER BY c DESC
+LIMIT 1;
+
+--Task48
+SELECT profile_name,SUM(b.page_count) c
+FROM profile p
+JOIN book_read br
+on p.id=br.profile_id
+JOIN book b
+on br.book_id=b.id
+WHERE status='read'
+GROUP BY profile_name
+ORDER BY c DESC
+LIMIT 10;
+
+--Task49
+SELECT profile_name,MIN(br.date_finished- br.date_started) as d
+FROM profile p
+JOIN book_read br
+on p.id = br.profile_id
+JOIN book
+ON br.book_id = book.id
+WHERE title='Oathbringer (The Stormlight Archive,  #3)'
+group by profile_name
+order by d;
 
 
 
