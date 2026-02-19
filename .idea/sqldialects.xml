@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/DVD.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Handin1.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Joins.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Test.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/cafeTask.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/goodreadsMAIN.sql" dialect="PostgreSQL" />
+    <file url="file://$USER_HOME$/Downloads/DVD_rental_DDL.sql" dialect="PostgreSQL" />
+    <file url="file://$USER_HOME$/Downloads/DVD_rental_data.sql" dialect="PostgreSQL" />
     <file url="file://$USER_HOME$/Downloads/GoodreadsV2_DDL.sql" dialect="PostgreSQL" />
     <file url="file://$USER_HOME$/Downloads/GoodreadsV2_Data.sql" dialect="PostgreSQL" />
     <file url="file://$USER_HOME$/Downloads/Simple_Goodreads_data.sql" dialect="PostgreSQL" />
