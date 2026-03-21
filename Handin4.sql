@@ -42,6 +42,10 @@ CREATE TABLE ReceiptLine
     promo_code    VARCHAR(20),
     warranty_code VARCHAR(20),
     PRIMARY KEY (store_id,receipt_no,line_no)
+    ,FOREIGN KEY (store_id) REFERENCES Store(store_id)
+    ,FOREIGN KEY (sku) REFERENCES product(sku)
+    ,FOREIGN KEY (promo_code) REFERENCES Promotion(promo_code)
+    ,FOREIGN KEY (warranty_code) REFERENCES Warranty(warranty_code)
 );
 
 CREATE TABLE Receipt (
