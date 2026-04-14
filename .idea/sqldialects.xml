@@ -10,6 +10,7 @@
     <file url="file://$PROJECT_DIR$/cafe.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/cafeTask.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/goodreadsMAIN.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/hotels.sql" dialect="PostgreSQL" />
     <file url="file://$USER_HOME$/Downloads/DVD_rental_DDL.sql" dialect="PostgreSQL" />
     <file url="file://$USER_HOME$/Downloads/DVD_rental_data.sql" dialect="PostgreSQL" />
     <file url="file://$USER_HOME$/Downloads/GoodreadsV2_DDL.sql" dialect="PostgreSQL" />
