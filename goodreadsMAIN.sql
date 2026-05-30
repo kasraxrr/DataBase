@@ -1,6 +1,5 @@
-SET SCHEMA 'goodreads_v2';
+SET SCHEMA 'goodreads';
 
-/*https://troelsmortensen.github.io/CodeLabs/Tutorials/GoodreadsExercises/Page.html*/
 
 --task2:
 SELECT first_name, last_name, id
@@ -65,7 +64,7 @@ FROM author
 WHERE middle_name IS NOT NULL;
 
 --task14
-SELECT author_id, COUNT(*) as count
+SELECT author_id, COUNT(*)  count
 FROM book
 GROUP BY author_id
 ORDER BY count DESC;
@@ -78,6 +77,15 @@ FROM book;
 SELECT title, page_count
 FROM book
 WHERE page_count = (SELECT MAx(page_count) from book);
+
+SELECT title, MAX(page_count) max
+FROM book
+WHERE page_count IS NOT NULL
+GROUP BY title
+ORDER BY max DESC
+LIMIT 1;
+
+
 
 --task17
 SELECT COUNT(*)

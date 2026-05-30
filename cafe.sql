@@ -1,5 +1,5 @@
-CREATE SCHEMA cafe6;
-SET SCHEMA 'cafe6';
+CREATE SCHEMA cafe;
+SET SCHEMA 'cafe';
 
 CREATE DOMAIN statusDomain AS VARCHAR(6) CHECK(VALUE IN ('opened' , 'closed'));
 CREATE DOMAIN roleDomain AS VARCHAR(7) CHECK(VALUE IN ('Manager' , 'Barista'));
@@ -44,4 +44,52 @@ CREATE TABLE Orders(order_id id NOT NULL ,order_time TIME,cc_id id,emp_id id
 ,PRIMARY KEY (order_id),
 FOREIGN KEY (cc_id)REFERENCES CostCenter(cc_id),
 FOREIGN KEY (emp_id)REFERENCES Employee(emp_id));
+
+CREATE TABLE Beans(
+    beenId SERIAL PRIMARY KEY,
+    beenName VARCHAR(20) NOT NULL,
+    blendNote VARCHAR(20),
+    Country VARCHAR(20)
+    );
+
+CREATE VIEW BeansCol as
+    SELECT * FROM Beans
+WHERE country='Col';
+
+CREATE VIEW BeansBra AS
+    SELECT * FROM Beans
+Where Country='Bre' WITH CHECK OPTION ;
+
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('dd','dd','Col');
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('aa','aa','col');
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('jj','oo','col');
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('bb','nj','col');
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('ii','ij','col');
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('bb','c','bre');
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('bb','e','Bre');
+INSERT INTO BeansBra(beenName, Country) VALUES ('night owl','col/bre'),('columbia','col');
+
+SELECT *
+FROM BeansBra;
+
+START TRANSACTION;
+
+SELECT * FROM cafe.beans;
+UPDATE cafe.beans SET country='Col' WHERE country='col';
+SELECT * FROM cafe.beans;
+
+COMMIT ;
+SELECT * FROM cafe.beans;
+
+START TRANSACTION ;
+
+SELECT * FROM cafe.beans;
+UPDATE cafe.beans SET country='bra' WHERE country='Bra';
+SELECT * FROM cafe.beans;
+
+ROLLBACK ;
+SELECT * FROM cafe.beans;
+
+SELECT *
+FROM cafe.
 

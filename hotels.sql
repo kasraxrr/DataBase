@@ -148,4 +148,62 @@ SELECT *
 FROM Booking
 JOIN Guest
 ON Guest.guestNo=Booking.guestNo
-WHERE guestName='Homer Simpson'
+WHERE guestName='Homer Simpson';
+
+CREATE OR REPLACE FUNCTION make_upper_case()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS
+    $$
+BEGIN
+    NEW.hotelname := UPPER(NEW.hotelname);
+    RETURN NEW;
+end;
+    $$;
+
+CREATE TRIGGER make_upper_case
+    BEFORE UPDATE
+    ON hotels.hotel
+    FOR EACH ROW
+    WHEN ( NEW.hotelname IS NOT NULL )
+    EXECUTE FUNCTION make_upper_case();
+
+SELECT *
+FROM hotels.hotel;
+
+UPDATE Hotel set hotelName=hotelName;
+
+
+
+
+SELECT g.guestName, b.guestNo AS g,COUNT(*)  AS c
+FROM Booking b
+JOIN Guest g
+ON b.guestNo = g.guestNo
+GROUP BY g.guestName, b.guestNo
+ORDER BY c DESC;
+
+
+CREATE TABLE Beans(
+    beenId SERIAL PRIMARY KEY,
+    beenName VARCHAR(20) NOT NULL,
+    blendNote VARCHAR(20),
+    Country VARCHAR(20)
+    );
+
+CREATE VIEW BeansCol as
+    SELECT * FROM Beans
+WHERE country='Col';
+
+CREATE VIEW BeansBra AS
+    SELECT * FROM Beans
+Where Country='Bre' WITH CHECK OPTION ;
+
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('dd','dd','Col');
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('aa','aa','col');
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('bb','c','bre');
+INSERT INTO Beans(beenName, blendNote, Country) VALUES ('bb','e','Bre');
+INSERT INTO BeansBra(beenName, Country) VALUES ('night owl','col/bre'),('columbia','col');
+
+SELECT *
+FROM BeansBra

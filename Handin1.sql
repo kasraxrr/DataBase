@@ -32,6 +32,9 @@ FROM book;
 SELECT MAX(page_count)
 FROM book;
 
+SELECT SUM(page_count)
+FROM book;
+
 SELECT MIN(page_count)
 FROM book;
 
@@ -40,7 +43,7 @@ FROM book;
 
 --TaskD(Group by and Having)
 /*single value rule = each cell can only have one value*/
-SELECT  shelf,COUNT(book_id) AS total_books,AVG(avg_rating) AS average_shelf_rating
+SELECT  shelf,COUNT(book_id),AVG(avg_rating)
 FROM book
 GROUP BY shelf;
 /*book read has no shelf*/
