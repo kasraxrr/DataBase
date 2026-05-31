@@ -242,6 +242,27 @@ GROUP BY publisher
 HAVING COUNT(*)>3;
 
 --Part 4: Subqueries & Advanced Filtering
+
+--41
 SELECT *
 FROM book
 WHERE page_count > (SELECT AVG(page_count) FROM book);
+
+
+--42
+SELECT title
+FROM book
+WHERE year_published = (SELECT MIN(year_published)FROM book);
+
+--43
+SELECT *
+FROM book
+WHERE author_id=(SELECT author_id FROM author WHERE last_name='Sanderson' LIMIT 1);
+
+SELECT *
+FROM book
+JOIN author
+on book.author_id = author.author_id
+WHERE last_name='Sanderson';
+
+--44
