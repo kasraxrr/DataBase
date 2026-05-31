@@ -173,3 +173,75 @@ JOIN book_genre
 ON book.book_id = book_genre.book_id
 JOIN genre
 ON book_genre.genre = genre.genre;
+
+--28
+SELECT COUNT(*)
+FROM book;
+
+--29
+SELECT AVG(page_count)
+FROM book;
+
+--30
+SELECT SUM(page_count)
+FROM book
+WHERE shelf='read';
+
+--31
+SELECT shelf,COUNT(*)
+FROM book
+GROUP BY shelf ;
+
+--32
+SELECT MAX(year_published),MIN(year_published)
+FROM book;
+
+--33
+SELECT author_id,AVG(avg_rating) as avarage
+FROM book
+GROUP BY author_id;
+
+--34
+SELECT book.publisher,COUNT(*)
+FROM book
+GROUP BY publisher;
+
+--35
+SELECT binding_type,AVG(page_count) as avarage
+FROM book
+GROUP BY binding_type;
+
+--36
+SELECT COUNT(*),book_id
+FROM book_genre
+group by book_id;
+
+--37
+SELECT book.publisher,MAX(avg_rating)
+FROM book
+GROUP BY book.publisher
+HAVING MAX(avg_rating)>4.5;
+
+--38
+SELECT book.author_id,COUNT(*)
+FROM book
+GROUP BY author_id
+HAVING COUNT(*)>5;
+
+--39
+SELECT shelf,AVG(my_rating) as avg
+FROM book
+WHERE my_rating IS NOT NULL
+GROUP BY shelf ;
+
+--40
+SELECT publisher,COUNT(*)
+FROM book
+WHERE page_count>400 AND publisher IS NOT NULL
+GROUP BY publisher
+HAVING COUNT(*)>3;
+
+--Part 4: Subqueries & Advanced Filtering
+SELECT *
+FROM book
+WHERE page_count > (SELECT AVG(page_count) FROM book);
