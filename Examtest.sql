@@ -124,3 +124,52 @@ on b.book_id=g.book_id
 JOIN author a
 on a.author_id=b.author_id
 WHERE last_name LIKE 'Sanderson';
+
+--21
+SELECT book.title,co_authors.author_id
+FROM co_authors
+JOIN book
+ON book.author_id=co_authors.author_id;
+
+--22
+SELECT book.title,author.last_name
+FROM book
+JOIN author
+on book.author_id=author.author_id
+WHERE shelf='currently-reading';
+
+--23
+SELECT *
+FROM book
+WHERE publisher LIKE 'Tor Books' AND my_rating=5;
+
+--24
+SELECT author.first_name,author.last_name,book_genre.genre
+FROM author
+JOIN book
+ON book.author_id=author.author_id
+JOIN book_genre
+ON book_genre.book_id=book.book_id
+WHERE book_genre.genre = 'science fiction';
+
+--25
+SELECT book.title,book.shelf
+FROM book
+ORDER BY shelf,title;
+
+--26
+SELECT publisher.publisher_name,book.title
+FROM publisher
+LEFT JOIN book
+on book.publisher=publisher.publisher_name
+ORDER BY title;
+
+--27
+SELECT book.title,author.first_name,author.last_name,genre.genre
+FROM book
+JOIN author
+ON book.author_id = author.author_id
+JOIN book_genre
+ON book.book_id = book_genre.book_id
+JOIN genre
+ON book_genre.genre = genre.genre;
